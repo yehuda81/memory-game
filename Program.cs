@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,28 +20,24 @@ namespace ConsoleApp1
                
                 if (user1)
                 {                    
-                    Console.WriteLine("User1 turn");
-                    
+                    Console.WriteLine("User1 turn");                    
                 }
                 else
                 {
-                    Console.WriteLine("User2 turn");
-                    
+                    Console.WriteLine("User2 turn");                    
                 }
-                user1 = !user1;
-                
+                user1 = !user1;                
                 Console.WriteLine("pick firstcard:");
                 int card1 = pickcard(matrix, out int a, out int b);
                 if (matrix[a, b] != 0)
                 {
                     Console.WriteLine("pick secondcard:");
-
                     int card2 = pickcard(matrix, out int c, out int d);
-
                     if (c == a && d == b || matrix[c, d] == 0)
                     {
                         i = i - 1;
                         Console.WriteLine("you need to pick anouther card");
+                        user1 = !user1;
                     }
                     else if (card1 != card2)
                     {
@@ -53,14 +49,13 @@ namespace ConsoleApp1
                         Console.WriteLine("Keep going");
                         matrix[a, b] = 0;
                         matrix[c, d] = 0;
-
-
                     }
                 }
                 else
                 {
                     i = i - 1;
                     Console.WriteLine("you need to pick anouther card");
+                    user1 = !user1;
                 }
             }
             Console.WriteLine("you Win");
@@ -80,8 +75,7 @@ namespace ConsoleApp1
                 j = Convert.ToInt32(Console.ReadLine());
                 if (i >= matrix.GetLength(0) || i < 0 || j >= matrix.GetLength(1) || j < 0)
                 {
-                    Console.WriteLine("Try Again");
-                   
+                    Console.WriteLine("Try Again");                   
                 }
                 
             }
@@ -91,10 +85,8 @@ namespace ConsoleApp1
             a = i;
             b = j;
             printmatrix(matrix, a, b);
-            return card;           
-
-        }
-      
+            return card; 
+        }     
 
         private static void printmatrix(int[,] matrix,int a,int b)
         {
@@ -128,11 +120,8 @@ namespace ConsoleApp1
             {
                 for (int g = 0; g < 2; g++)
                 {
-
-
                     int row, cul;
                     do
-
                     {
                         row = r.Next(0, size);
                         cul = r.Next(0, size);
@@ -143,20 +132,16 @@ namespace ConsoleApp1
             }
                
         }
-
         private static int Getsize()
         {
             int size;
-
             do
             {
                 Console.WriteLine("Enter Size Please:");
                 size = Convert.ToInt32(Console.ReadLine());
             }
             while (size <= 0 || size % 2 != 0 || size > 8);
-            return size;
-
-            
+            return size;            
         }
     }
 }
